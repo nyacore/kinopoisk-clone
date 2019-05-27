@@ -17,10 +17,19 @@ router.get('/', (req, res) => {
 router.get('/films', (req, res) => {
 	filmModel.find()
 		.populate('added_by')
-		.populate('actors')
+		// .populate('actors')
 		.exec((err, result) => {
 			res.json(result);
 		});
+});
+
+router.get('/films/:id', async (req, res) => {
+	const foundFilm = await filmModel.findById(req.params.id)
+		.populate('added_by');
+	res.json({
+		...foundFilm,
+		debug: 'Debug message'
+	});
 });
 
 router.get('/users', (req, res) => {
@@ -51,7 +60,10 @@ router.post('/users', async (req, res) => {
 		});
 });
 
-// Authentication middleware
+/*
+Authentication middleware.
+It applies to all paths below
+ */
 router.use((req, res, next) => {
 	const authorization_string = req.get('Authorization');
 	const token = authorization_string.split(' ')[1];
@@ -88,6 +100,10 @@ router.post('/films', async (req, res) => {
 				res.json(error);
 			});
 	}
+});
+
+router.post('/reviews', async (req, res) => {
+
 });
 
 

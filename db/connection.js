@@ -1,7 +1,10 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 
+
 mongoose.connect(
-	'mongodb://localhost/trinity',
+	`mongodb://${process.env.DB_HOST}/trinity`,
 	{ useNewUrlParser: true }
 );
 

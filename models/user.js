@@ -6,7 +6,8 @@ const User = new Schema({
 	login: {
 		type: String,
 		unique: true,
-		required: true
+		required: true,
+		minlength: 3
 	},
 	password: {
 		type: String,

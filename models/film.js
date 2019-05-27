@@ -21,7 +21,8 @@ const Film = new Schema({
 	},
 	added_by: {
 		type: Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'User',
+		required: true
 	},
 	poster: {
 		type: String,
@@ -39,8 +40,7 @@ const Film = new Schema({
 	gallery: [{ type: String }],
 	n_of_episodes: {
 		type: Number,
-		default: 1,
-		required: true
+		default: 1
 	},
 	added_date: {
 		type: Date,

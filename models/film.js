@@ -32,9 +32,21 @@ const Film = new Schema({
 		type: Date,
 		required: true
 	},
+	number_of_votes: {
+		type: Number,
+		default: 0
+	},
+	votes_sum: {
+		type: Number,
+		default: 0
+	},
 	rating: {
 		type: Number,
 		default: 0
+	},
+	genre: {
+		type: String,
+		required: true
 	},
 	actors: [{ type: Schema.Types.ObjectId, ref: 'Actor' }],
 	gallery: [{ type: String }],
